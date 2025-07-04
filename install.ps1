@@ -14,7 +14,7 @@ if ($installedModule) {
     # If the module is installed, compare its version to the latest version in the gallery
     if ($installedModule.Version -lt $galleryModule.Version) {
         # If the installed version is older, update it
-        Write-Host "The $moduleName module is outdated. $($moduleName.Version)"
+        Write-Host "The $moduleName module is outdated. $($installedmodule.version)"
         Write-Host "Updating now..."
         Install-Module -Name $moduleName -Force
         Write-Host "$moduleName has been updated to version. $($galleryModule.Version)"
