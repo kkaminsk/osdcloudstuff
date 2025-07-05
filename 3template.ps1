@@ -14,3 +14,4 @@ Get-ChildItem "$(Get-OSDCloudWorkspace)\Media\Boot" | Where {$_.PSIsContainer} |
 
 Get-ChildItem "$(Get-OSDCloudWorkspace)\Media\EFI\Microsoft\Boot" | Where {$_.PSIsContainer} | Where {$_.Name -notin $KeepTheseDirs} | Remove-Item -Recurse -Force 
 
+# Not doing for now Add Windows install.wim to C:\osdcloud\TestOSD\Media\OSDCloud\OS 
