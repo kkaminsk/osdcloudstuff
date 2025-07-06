@@ -1,7 +1,7 @@
-# Custom editing for custom image.
+# Custom editing for unattended image.
 
 # Create folder
-# C:\WinPE\mount
+C:\WinPE\mount
 
 # Run
 dism /mount-wim /wimfile:"C:\osdcloud\TestOSD\Media\sources\boot.wim" /index:1 /mountdir:"C:\WinPE\mount"
@@ -10,4 +10,9 @@ dism /mount-wim /wimfile:"C:\osdcloud\TestOSD\Media\sources\boot.wim" /index:1 /
 
 # Unmount WIM
 dism /unmount-wim /mountdir:"C:\WinPE\mount" /commit
+
+# Troubleshooting
+dism /get-mountedwiminfo
+
+dism /unmount-wim /mountdir:"C:\WinPE\mount" /discard
 
