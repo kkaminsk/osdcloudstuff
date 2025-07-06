@@ -5,7 +5,7 @@ title OSD 25.7.5.3
 PowerShell -Nol -C Initialize-OSDCloudStartnet
 PowerShell -Nol -C Initialize-OSDCloudStartnetUpdate
 @ECHO OFF
-ECHO Start-OSDCloudGUI
-start /wait PowerShell -NoL -W Mi -C Start-OSDCloud -Brand 'OSDCloud' -ImageFileUrl "http://PFCOMDC1/install.wim"
-shutdown /r /i /t:30 /c "OSDCloud Complete"
+ECHO Start-OSDCloud
+start /wait PowerShell -NoL -W Ma -C Start-OSDCloud -ImageFileUrl "http://PFCOMDC1/install.wim" -imageindex 3
+start /wait PowerShell -NoL -W Mi -C restart-computer -force
 @ECHO ON
