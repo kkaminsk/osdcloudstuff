@@ -1,0 +1,32 @@
+# Create folder
+C:\Win11\mount
+C:\Win11\sources
+C:\Win11\DellDrivers\Dell
+
+# Copy install.wim
+Copy your install.wim to C:\Win11\sources
+
+# Run
+dism /mount-wim /wimfile:"C:\Win11\sources\install.wim" /index:3 /mountdir:"C:\Win11\mount"
+
+
+dism /image:C:\Win11/mount /add-driver /driver:C:\W11\DellDrivers\Dell /recurse
+
+# Unmount WIM
+dism /unmount-wim /mountdir:"C:\Win11\mount" /commit
+
+# Troubleshooting
+dism /get-mountedwiminfo
+
+# Discard changes
+dism /unmount-wim /mountdir:"C:\Win11\mount" /discard
+
+
+
+Remove WIM Indexes
+
+dism /delete-image /imagefile:"C:\Win11\sources\install.wim" /index:1
+dism /delete-image /imagefile:"C:\Win11\sources\install.wim" /index:2
+dism /delete-image /imagefile:"C:\Win11\sources\install.wim" /index:4
+dism /delete-image /imagefile:"C:\Win11\sources\install.wim" /index:5
+dism /delete-image /imagefile:"C:\Win11\sources\install.wim" /index:6
