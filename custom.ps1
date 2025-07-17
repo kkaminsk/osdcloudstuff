@@ -6,8 +6,8 @@ if (Test-Path $tempUnattendFile) {
     Remove-Item $tempUnattendFile -Force
 }
 
-# Define the computer name
-$computerName = "WORKSTATION-01"
+# Prompt the user for the computer name
+$computerName = Read-Host "Enter the desired computer name"
 
 # Define the content for the new unattend.xml file
 $unattendContent = @"
