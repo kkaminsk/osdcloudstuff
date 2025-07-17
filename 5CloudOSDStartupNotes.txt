@@ -14,5 +14,6 @@ dism /unmount-wim /mountdir:"C:\WinPE\mount" /commit
 # Troubleshooting
 dism /get-mountedwiminfo
 
+# Discard changes
 dism /unmount-wim /mountdir:"C:\WinPE\mount" /discard
 
