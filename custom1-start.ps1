@@ -47,6 +47,56 @@ while ($true) {
     break
 }
 
+# This variable will hold the final, validated full name.
+$user = $null
+
+# This flag controls the validation loop.
+$isNameValid = $false
+
+# Use a do-while loop to repeatedly prompt the user until valid input is received.
+do {
+    # Prompt the user to enter a full name.
+    # The prompt clearly states that pressing Enter will select the default value.
+    $inputName = Read-Host -Prompt "Please enter the user's full name (Press Enter for 'Default User')"
+
+    # Determine the name to validate. If the user pressed Enter without typing
+    # anything, the input will be null or whitespace. In that case, we use
+    # our default value. Otherwise, we use the name they entered.
+    $candidateName = if ([string]::IsNullOrWhiteSpace($inputName)) {
+        "Default User"
+    } else {
+        $inputName
+    }
+
+    # --- VALIDATION LOGIC ---
+    # The "Full Name" field for a local user account is stored in the "Comment"
+    # attribute, which has a maximum length of 256 characters.
+
+    if ($candidateName.Length -gt 256) {
+        # If the name is too long, display a warning message.
+        # The $isNameValid flag remains $false, so the loop will run again.
+        Write-Warning "❌ The name provided is too long. A full name cannot exceed 256 characters. Please try again."
+    }
+    else {
+        # If the name is valid, assign it to the final $user variable.
+        $user = $candidateName
+
+        # Set the flag to $true to exit the do-while loop.
+        $isNameValid = $true
+
+        # Provide positive feedback to the user.
+        Write-Host "✅ Success! The user's full name has been set to '$user'." -ForegroundColor Green
+    }
+
+} while ($isNameValid -eq $false)
+
+# --- SCRIPT CONTINUATION ---
+# You can now confidently use the $user variable elsewhere in your script,
+# knowing it contains a valid value.
+Write-Host "`n----------------------------------------"
+Write-Host "The script can now proceed."
+Write-Host "The variable `$user is set to: '$user'"
+
 Write-Host "Proceeding with computer name: $computerName"
 
 # Define the content for the new unattend.xml file
