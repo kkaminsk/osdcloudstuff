@@ -93,11 +93,12 @@ do {
 # --- SCRIPT CONTINUATION ---
 # You can now confidently use the $user variable elsewhere in your script,
 # knowing it contains a valid value.
-Write-Host "`n----------------------------------------"
+Write-Host "------------------------------------------------"
 Write-Host "The script can now proceed."
-Write-Host "The variable `$user is set to: '$user'"
-
+Write-Host "The user name is set to: $user"
 Write-Host "Proceeding with computer name: $computerName"
+Write-Host "------------------------------------------------"
+pause
 
 # Define the content for the new unattend.xml file
 $unattendContent = @"
