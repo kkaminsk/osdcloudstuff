@@ -7,7 +7,47 @@ if (Test-Path $tempUnattendFile) {
 }
 
 # Prompt the user for the computer name
-$computerName = Read-Host "Enter the desired computer name"
+# $computerName = Read-Host "Enter the desired computer name"
+
+# Loop indefinitely until a valid name is provided.
+while ($true) {
+    # Prompt the user for input.
+    $computerName = Read-Host "Enter the desired computer name"
+
+    # --- VALIDATION CHECKS ---
+
+    # 1. Check length: Must be between 1 and 15 characters.
+    if ($computerName.Length -lt 1 -or $computerName.Length -gt 15) {
+        Write-Warning "❌ Name must be between 1 and 15 characters long. Please try again."
+        continue # Restart the loop.
+    }
+
+    # 2. Check allowed characters: Only letters, numbers, and hyphens.
+    if ($computerName -notmatch '^[a-zA-Z0-9-]+$') {
+        Write-Warning "❌ Name can only contain letters (A-Z), numbers (0-9), and hyphens (-). Please try again."
+        continue
+    }
+
+    # 3. Check for all-numeric names.
+    if ($computerName -match '^\d+$') {
+        Write-Warning "❌ Name cannot consist entirely of numbers. Please try again."
+        continue
+    }
+
+    # 4. Check for leading or trailing hyphens.
+    if ($computerName.StartsWith("-") -or $computerName.EndsWith("-")) {
+        Write-Warning "❌ Name cannot start or end with a hyphen. Please try again."
+        continue
+    }
+
+    # --- VALIDATION PASSED ---
+
+    # If all checks are passed, confirm the name is valid and exit the loop.
+    Write-Host -ForegroundColor Green "✅ '$computerName' is a valid computer name."
+    break
+}
+
+Write-Host "Proceeding with computer name: $computerName"
 
 # Define the content for the new unattend.xml file
 $unattendContent = @"
