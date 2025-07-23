@@ -17,3 +17,4 @@ dism /get-mountedwiminfo
 # Discard changes
 dism /unmount-wim /mountdir:"C:\WinPE\mount" /discard
 
+dism /cleanup-wim
