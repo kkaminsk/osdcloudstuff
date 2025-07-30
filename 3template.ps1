@@ -1,3 +1,4 @@
+New-OSDCloudTemplate
 #Set my working OSDCloud Template 
 
 Set-OSDCloudTemplate -Name 'TestOSD'
