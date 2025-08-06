@@ -18,3 +18,10 @@ dism /get-mountedwiminfo
 dism /unmount-wim /mountdir:"C:\WinPE\mount" /discard
 
 dism /cleanup-wim
+
+
+
+Creating the Install WIM
+
+
+oscdimg -m -u2 -bC:\Temp\win11iso\boot\etfsboot.com C:\Temp\win11iso C:\temp\w11custom.iso
