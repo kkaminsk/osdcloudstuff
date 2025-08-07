@@ -37,7 +37,7 @@ With the image mounted, you can now add your custom scripts and configurations.
 
 #### **Step 4: Commit Changes**
 
-Once you have completed your customizations, unmount the WIM file and commit the changes to save them permanently.
+Once you have completed your customizations, unmount the WIM file and commit the changes to save them permanently. Before running the command close any applications, file explorers or even command prompts in the "C:\\WinPE\\mount" folder otherwise this operation will fail.
 
 Run the following command:
 
